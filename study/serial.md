@@ -1,0 +1,11 @@
+ <script src="scripts/events.js"></script>
+<script src="scripts/index.js"></script>
+<script src="scripts/settings.js"></script>
+<script src="scripts/util.js"></script>
+<script src="scripts/transformers/transformer.js"></script>
+<script src="scripts/transformers/babel.js"></script>
+<script src="scripts/transformers/traceur.js"></script>
+<script src="scripts/transformers/coffee.js"></script>
+<script src="scripts/transformers/livescript.js"></script>
+<script src="scripts/transformers/javascript.js"></script>
+<script src="scripts/repl.js"></script>

@@ -1,0 +1,44 @@
+$color: black;
+$primary-color: teal;
+body {
+	backgrond: rgba(0, 0, 0, 0.1);
+	font-family: monaco;
+}
+
+.center {
+	max-width: 1350px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.holder {
+	display: flex;
+	.code_mirror_area {
+		flex: 2;
+		padding: 20px;
+	}
+	.setting_area {
+		flex: 1
+	}
+}
+
+h1 {
+	text-align: center;
+}
+
+#editor {
+	border: 1px solid rgba(128, 128, 128, .5)
+}
+
+.CodeMirror {
+	height: 700px;
+	font-family: Monaco;
+	width: 100%;
+	border: 2px solid grey;
+	font-size: 22px;
+}
+
+
+
+
+
