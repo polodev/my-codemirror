@@ -24,7 +24,18 @@
 			</div>
 			<div class='setting_area'>
 				<h1>Setting</h1>
-				<p>some setting</p>
+				<div class='form-group'>
+					<label for="mode">Select Mode</label>
+					<select name='mode' id='mode'>
+						<option value='javascript'>javascript</option>
+						<option value='htmlmixed'>htmlmixed</option>
+						<option value='css'>css</option>
+						<option selected value='text/x-php'>php</option>
+						<option value='jsx'>jsx</option>
+						<option value='sql'>sql</option>
+					</select>
+				</div>
+				<!-- /.form-controller -->
 			</div>
 		</div>
 		<!-- /.d-flex -->
@@ -35,9 +46,13 @@
 <!-- CodeMirror manual script -->
 <script src='codemirror/lib/codemirror.js'></script>
 <script src='codemirror/mode/javascript/javascript.js'></script>
+<script src='codemirror/mode/clike/clike.js'></script>
 <script src='codemirror/mode/htmlmixed/htmlmixed.js'></script>
 <script src='codemirror/mode/xml/xml.js'></script>
 <script src='codemirror/mode/css/css.js'></script>
+<script src='codemirror/mode/php/php.js'></script>
+<script src='codemirror/mode/jsx/jsx.js'></script>
+<script src='codemirror/mode/sql/sql.js'></script>
 <script src='codemirror/keymap/vim.js'></script>
 <script src='codemirror/addon/hint/anyword-hint.js'></script>
 <script src='codemirror/addon/hint/show-hint.js'></script>
@@ -50,16 +65,58 @@
 
 <script src='vendor/emmet.js'></script>
 <script type="text/javascript">
+/**
+ *  lineNumbers
+ *  theme
+ *  mode
+ *  lineWrapping
+ *  tabSize
+ *  keyMap
+ *
+ * font-size
+ * font-family
+ */
+var value = `
+<?php
+class Hello {
+	public function __construct()
+  {
+  	return $this->belongsTo(App::class);
+  }
+}
+`
+CodeMirror.commands.autocomplete = function(cm) {
+  cm.showHint({hint: CodeMirror.hint.anyword});
+}
 var editor = CodeMirror(document.getElementById('editor'), {
-  value: "function myScript(){return 100;}\n",
+  value: value,
   lineNumbers: true,
-  mode:  "javascript",
-  theme: "tomorrow-night-bright",
+  theme: "solarized",
+	mode : "text/x-php",
+  lineWrapping: false,
+
+	profile: 'xhtml', /* define Emmet output profile */
   tabSize: 2,
-  keyMap: 'vim'
+  keyMap: 'vim',
+  matchBrackets: true,
+  autoCloseBrackets: true,
+  continueComments: "Enter",
+  extraKeys: {
+    "Ctrl-Q": "toggleComment",
+    "Ctrl-Space": "autocomplete"
+  },
 })
 emmetCodeMirror(editor)
+$('#mode').on('change', function (e) {
 
+	let value = e.target.value;
+	editor.setOption('mode', value);
+})
+
+//how to change select option value in javascript
+function changeMode (mode) {
+	$('#mode').val(mode)
+}
 </script>
 
 

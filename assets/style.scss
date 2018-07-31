@@ -27,15 +27,19 @@ h1 {
 }
 
 #editor {
-	border: 1px solid rgba(128, 128, 128, .5)
+	border: 1px solid rgba(128, 128, 128, .5);
+	height: 700px;
+	font-family: Monaco;
+	font-size: 22px;
 }
 
 .CodeMirror {
-	height: 700px;
-	font-family: Monaco;
+	height: 100%;
+	overflow: hidden;
 	width: 100%;
-	border: 2px solid grey;
-	font-size: 22px;
+	max-width: 100%;
+	font-family: inherit;
+	font-size: inherit;
 }
 
 
